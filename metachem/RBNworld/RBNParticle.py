@@ -13,7 +13,10 @@ class RBNParticle(Particle):
         super(RBNParticle, self).__init__()
         if len(rbns) == 1:
             self.atom = True
-        self.id = tuple([rbn.id for rbn in rbns])
+        try:
+            self.id = tuple([rbn.id for rbn in rbns])
+        except AttributeError:
+            self.id = tuple([rbn.rbnNumber for rbn in rbns])
         self.atoms = rbns
         self.open_spikes = open_spikes
         self.bonds = bonded_spikes

@@ -150,6 +150,7 @@ class SpikeBondBreak(CoreNode.Action):
         self.broken_bonds = self.readcontainers.read()
 
     def pull(self):
+        self.particles = []
         removed = []
         for bond in self.broken_bonds:
             part = bond[0]

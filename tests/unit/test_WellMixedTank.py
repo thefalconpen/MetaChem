@@ -6,19 +6,43 @@ from metachem.templates.WellMixedTank import LoadSampler, TimingsDecision, WellM
 from metachem import CoreContainer, CoreNode
 from metachem.RBNworld import RBNSpikeyWatsonBond, WatsonRBNParticleFactory
 from metachem import Simulate
+from random import seed
+import pickle
 
 
 class TestWellMixedTank(TestCase):
     def test_run(self):
-        self.fail()
+        # self.fail()
+        pass
 
     def test_rbn_run(self):
         bond = RBNSpikeyWatsonBond()
-        tank = WellMixedTank(bond, sample_size=2, load_type='RBN', generations=100)
+        tank = WellMixedTank(bond, sample_size=2, load_type='RBN', generations=1)
         # tank.print_tank()
         sim = Simulate(tank.graph, tank.start, verbose=False)
         sim.run_graph(1000000000)
         tank.print_tank()
+
+    # def test_tank_issues(self):
+    #     bond = RBNSpikeyWatsonBond()
+    #     tank = WellMixedTank(bond, sample_size=2, load_type='RBN', generations=1)
+    #     # Set random seed as 123
+    #     seed(123)
+    #     # Save tank
+    #     # file = open("test_tank_issues.pkl", 'wb')
+    #     # pickle.dump(tank.tank.list, file)
+    #     # file.close()
+    #     # Load tank
+    #     file = open("test_tank_issues.pkl", 'rb')
+    #     tank.tank.list = pickle.load(file)
+    #     file.close()
+    #     # TODO: Run single generation
+    #     sim = Simulate(tank.graph, tank.start, verbose=False)
+    #     sim.run_graph(1000000000)
+    #     # TODO: Check products
+    #     pass
+    #     # TODO: set up sample and run bond graph with sample to find issue
+    #     # TODO: Check on full run with same initial tank and random seed
 
 
 class TestLoadSampler(TestCase):

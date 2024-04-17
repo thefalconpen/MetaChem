@@ -235,7 +235,7 @@ class TimingsDecision(CoreNode.Decision):
             Option of which control edge to take from this control node.
 
         """
-        if self.gen < self.gen_thresh and self.tank_size >= self.sample_size:
+        if self.gen <= self.gen_thresh and self.tank_size >= self.sample_size:
             return 0
         elif self.time < self.time_thresh:
             return 1
